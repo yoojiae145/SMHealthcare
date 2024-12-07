@@ -55,18 +55,49 @@ void loadDiets(const char* DIETFILEPATH) {
 
 void inputDiet(HealthData* health_data) {
     int choice, i;
+    char food_name[MAX_FOOD_NAME_LEN];
+    
     
     // ToCode: to provide the options for the diets to be selected
     printf("The list of diets:\n");
-    
+    	for (i = 0; i < diet_list_size; i++) {
+        	printf("%s - %d kcal\n", diet_list[i].food_name, diet_list[i].calories_intake);
+    		}	
+    		printf("Type 'exit' to cancel.\n");
+
     
 	// ToCode: to enter the diet to be chosen with exit option
-    
+    do {
+        printf("Type the food name: ");
+        scanf("%s", food_name);
+
+        choice = 0;
+        for (i = 0; i < diet_list_size; i++) {
+            if (strcmp(diet_list[i].food_name, food_name) == 0) {
+                choice = 1; 														// if choice Match
+                break;
+            }
+        }
+
+        if (strcmp(food_name, "exit") == 0) {
+            printf("Exit.\n");
+            return;
+        }
+        if (!choice) {
+            printf("try again.\n");
+        }
+    } while (!choice);
 
     // ToCode: to enter the selected diet in the health data
-    
+    printf("You selected: %s (%d kcal)\n", diet_list[i].food_name, diet_list[i].calories_intake);
+
+    	health_data->diet[health_data->diet_count] = diet_list[i]; 				// selected diet save
+    	health_data->diet_count++; 													// diet count 
 
     // ToCode: to enter the total calories intake in the health data
+ 		health_data->total_calories_intake += diet_list[i].calories_intake; 		// total calories update
+    
+	printf("Total calories intake updated to: %d kcal\n", health_data->total_calories_intake);
 
 
 }
