@@ -1,14 +1,12 @@
 [Exercises] 
-walking- 4 kcal 
-Total calories burned: 8 kcal
+Total calories burned: 0 kcal
 
 [Diets] 
+rice- 600 kcal 
 bread- 680 kcal 
-salad- 70 kcal 
-pizza- 900 kcal 
 chicken- 925 kcal 
-Total calories intake: 2575 kcal
+Total calories intake: 2205 kcal
 
 [Total] 
 Basal metabolic rate - 1300 kcal
-The remaining calories - 1267 kcal
+The remaining calories - 905 kcal

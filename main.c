@@ -33,7 +33,7 @@ int main() {
     	
     	if (calories_remain==0 ){
             printf("You have consumed all your calories for today! \n");
-            break; 
+            break; 																												// Exit the loop
 		} 
 		else{
 			printf("\n=======================================================================\n");
@@ -50,17 +50,17 @@ int main() {
 		// ToCode: to run the sysmtem based on the user's choice
         switch (choice) {
             case 1:															// choice 1-> exercise 
-            	inputExercise(&health_data);
-                saveData(HEALTHFILEPATH, &health_data);
+            	inputExercise(&health_data);								// get exercise data
+                saveData(HEALTHFILEPATH, &health_data);						// Save data in the file
                 break;
                 
             case 2:															// choice 2-> diet 
-            	inputDiet(&health_data);
-                saveData(HEALTHFILEPATH, &health_data);
+            	inputDiet(&health_data);									// get diet data
+                saveData(HEALTHFILEPATH, &health_data);						// Save data in the file
                 break;
                 
             case 3:															// choice 3-> information
-            	printHealthData(&health_data);
+            	printHealthData(&health_data);								
                 break;
                 
             case 4:															// choice 4-> exit

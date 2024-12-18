@@ -37,26 +37,26 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     fprintf(file, "[Exercises] \n");
 		for (i = 0; i < health_data->exercise_count; i++) {
         	fprintf(file, "%s- %d kcal \n", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute);
-    	}
-    	fprintf(file, "Total calories burned: %d kcal\n", health_data->total_calories_burned); 				//chose exercise
+    	}																									// get exerxise name & calories
+    	fprintf(file, "Total calories burned: %d kcal\n", health_data->total_calories_burned); 				// get total calories burned
 
     
     // ToCode: to save the chosen diet and total calories intake 
     fprintf(file, "\n[Diets] \n");
 		for (i = 0; i < health_data->diet_count; i++) {
     	    fprintf(file, "%s- %d kcal \n", health_data->diet[i].food_name, health_data->diet[i].calories_intake);
-    	}
-		fprintf(file, "Total calories intake: %d kcal\n", health_data->total_calories_intake);				// chose diet
+    	}																									// get food name & calories
+		fprintf(file, "Total calories intake: %d kcal\n", health_data->total_calories_intake);				// get total calories intake
 
 
 
     // ToCode: to save the total remaining calrories
     remaining_calories=(health_data->total_calories_intake - health_data->total_calories_burned - BASAL_METABOLIC_RATE);
 	    fprintf(file, "\n[Total] \n");
-	    	fprintf(file, "Basal metabolic rate - %d kcal\n", BASAL_METABOLIC_RATE);
-	    	fprintf(file, "The remaining calories - %d kcal\n", remaining_calories);
+	    	fprintf(file, "Basal metabolic rate - %d kcal\n", BASAL_METABOLIC_RATE);						// get basal metabolic rate
+	    	fprintf(file, "The remaining calories - %d kcal\n", remaining_calories);						// get remaining calories
 		
-		fclose(file);
+		fclose(file);																						// Close the file
 }
 
 /*
@@ -109,20 +109,20 @@ void printHealthData(const HealthData* health_data) {
     	if(remaining_calories==0){																				// if remaining calories 0, print
 			printf("You have consumed all your calories for today!\n");
 			}
-		else if(remaining_calories<0){												
+		else if(remaining_calories<0){																			// If remaining calories negative							
 			printf("[Warning] Too few calories!\n");
-				if((health_data->total_calories_intake)==DAILY_CALORIE_GOAL){
+				if((health_data->total_calories_intake)==DAILY_CALORIE_GOAL){									// check calorie goal
 					printf("Your total calorie intake for today has reached your goal!\n");
-					}else if((health_data->total_calories_intake)<DAILY_CALORIE_GOAL){
+					}else if((health_data->total_calories_intake)<DAILY_CALORIE_GOAL){							// If the intake is under goal
 						printf("Your total calorie intake for today has not reached your goal, remember to eat more!!\n");
 					}else
 						printf("You have eaten more calories than planned today, but you have exercised too much!\n");		
 			}
-			else {
+			else {																								// If remaining calories positive
 				printf("Please exercise for your health!\n");
-					if((health_data->total_calories_intake)==DAILY_CALORIE_GOAL){
+					if((health_data->total_calories_intake)>=DAILY_CALORIE_GOAL){								// check calorie goal
 						printf("Your total calorie intake for today has reached your goal!\n");
-					}else if((health_data->total_calories_intake)<DAILY_CALORIE_GOAL){
+					}else if((health_data->total_calories_intake)<DAILY_CALORIE_GOAL){							// if the intake is under goal
 						printf("Your total calorie intake for today has not reached your goal, remember to eat more!!\n");
 					}printf("=======================================================================\n");
 			}

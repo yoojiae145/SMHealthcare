@@ -64,9 +64,9 @@ void inputExercise(HealthData* health_data) {
     printf("The list of exercises: \n");
     	for (i = 0; i < exercise_list_size; i++) {
        		printf("%s - %d kcal/min\n",  exercise_list[i].exercise_name, 
-                                         exercise_list[i].calories_burned_per_minute); // list of exercises print.
+                                         exercise_list[i].calories_burned_per_minute); 				// list of exercises print.
     }
-    printf("Type 'exit' to cancel.\n");												   // if user type 'exit' exit.
+    printf("Type 'exit' to cancel.\n");												   				// if user type 'exit' exit.
 
 
     // ToCode: to enter the exercise to be chosen with exit option
@@ -77,19 +77,19 @@ void inputExercise(HealthData* health_data) {
  		
  		choice=0;
  		for (i = 0; i < exercise_list_size; i++) {
-            if (strcmp(exercise_list[i].exercise_name, exercise_name) == 0) { // strcmp function >> typed string <> list string compare
-                choice = 1; 												  // if typed string == list string, choice =1 
+            if (strcmp(exercise_list[i].exercise_name, exercise_name) == 0) { 						// strcmp function >> typed string <> list string compare
+                choice = 1; 												 						// if typed string == list string, choice =1 
                 break;
             }
         }
- 		if (strcmp(exercise_name, "exit") == 0) {                             // if user type exit, return.
+ 		if (strcmp(exercise_name, "exit") == 0) {                             						// if user type exit, return.
             printf("Exiting exercise selection.\n");
             return;
 		}
 		if (!choice) {
-            printf("Invalid exercise name. Please try again.\n");            // if differnt name typed print
+            printf("Invalid exercise name. Please try again.\n");            						// if differnt name typed print
 			}  
-	} while (!choice);                                                        // while typed string =! list string 
+	} while (!choice);                                                        						// while typed string =! list string 
     
     
     // To enter the duration of the exercise
@@ -98,12 +98,13 @@ void inputExercise(HealthData* health_data) {
 
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data
-    int calories_burned = exercise_list[i].calories_burned_per_minute * duration;  		// calories Calculate
-    printf("You burned %d kcal by doing %s for %d minutes.\n", calories_burned, exercise_list[i].exercise_name, duration);
+    int calories_burned = exercise_list[i].calories_burned_per_minute * duration;  					// calories Calculate
+    
+	printf("You burned %d kcal by doing %s for %d minutes.\n", calories_burned, exercise_list[i].exercise_name, duration);
 
 
-    health_data->exercises[health_data->exercise_count] = exercise_list[i];      		// data stored
-    health_data->total_calories_burned += calories_burned;
-    health_data->exercise_count++;
+    health_data->exercises[health_data->exercise_count] = exercise_list[i];      					// data stored
+    health_data->total_calories_burned += calories_burned;											// Update the total calories burned
+    health_data->exercise_count++;																	// exercise count 
 
 }
